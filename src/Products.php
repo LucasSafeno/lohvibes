@@ -83,5 +83,29 @@ public function searchProduct($codigo){
   }
 } // searchProduct
 
+
+public function updateProduct($codigo, $nome, $descricao, $preco, $estoque){
+  $this->__set("internalCode", $codigo);
+
+  $this->__set("internalCode", $codigo);
+  $this->__set("nameProduct", $nome);
+  $this->__set("descriptionProduct", $descricao);
+  $this->__set("priceProduct", $preco);
+  $this->__set("quantityStock", $estoque);
+
+  $query = $this->db->prepare("UPDATE products SET nameProduct = :nome, descriptionProduct = :descricao, priceProduct = :preco, quantityStock = :estoque WHERE internalCode = :codigo");
+  $query->bindValue(":nome", $this->__get("nameProduct"));
+  $query->bindValue(":descricao", $this->__get("descriptionProduct"));
+  $query->bindValue(":preco", $this->__get("priceProduct"));
+  $query->bindValue(":estoque", $this->__get("quantityStock"));
+  $query->bindValue(":codigo", $this->__get("internalCode"));
+
+  if($query->execute()){
+    return true;
+  }
+
+  return false;
+} // updateProduct
+
 } //Products
 ?>

@@ -12,7 +12,7 @@
             </div>
 
             <div class="estoque-opcao">
-              <button type="submit" onclick="mostrarAlerta()">Editar Produto</button>
+              <button type="submit" class="openModal" data-modal-target="modalEditarProduto"">Editar Produto</button>
             </div>
           </div>
         </div>
@@ -91,6 +91,25 @@
           <h2>Consultar Produto</h2>
           <!-- Formulário !--> 
           <form action="funcoes/consulta_produto.php" method="get">
+            <div class="form-control">
+              <label for="codigo">Código</label>
+              <input type="text" name="codigo" id="codigo" size="6" maxlength="6">
+            </div>
+
+            <div class="form-control">
+            <button type="submit" class="btn-verde">Pesquisar</button>
+            </div>
+
+          </form>
+          <button class="close-button closeModal closeModalConsultarProduto">Fechar</button>
+      </div>
+    </div>
+
+    <!-- Editar !-->
+    <div id="modalEditarProduto" class="modal">
+      <div class="modal-content">
+         <!-- Formulário !--> 
+         <form action="funcoes/editar_produto.php" method="get">
             <div class="form-control">
               <label for="codigo">Código</label>
               <input type="text" name="codigo" id="codigo" size="6" maxlength="6">
